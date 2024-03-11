@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<bookOrder xmlns="http://delte.org/purchaseOrder"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://delte.org/purchaseOrder purchaseOrder.xsd"
+               OrderDate="2024-03-06">
+
+    <ShipTo>
+        <shipId>1</shipId>
+        <name>Ahmed Mohammed</name>
+        <street>123 Ibrahim St</street>
+        <city>Cairo</city>
+        <zip>12345</zip>
+        <paymentStatus>yes</paymentStatus>
+        <paymentMethod>
+            <visa>
+                <debit-card>yes</debit-card>
+            </visa>
+        </paymentMethod>
+    </ShipTo>
+    <ShipTo>
+        <shipId>2</shipId>
+        <name>Fathy Baiomy</name>
+        <street>20 Galaa St</street>
+        <city>Tanta</city>
+        <zip>54321</zip>
+        <paymentStatus>no</paymentStatus>
+        <paymentMethod>
+            <cache>1000</cache>
+        </paymentMethod>
+    </ShipTo>
+</bookOrder>

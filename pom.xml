@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ws.java</groupId>
+  <artifactId>java-webservices</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>java-webservices</name>
+  <modules>
+    <module>soap-ws</module>
+    <module>soap-ws/consumer-soap-ws-native</module>
+    <module>soap-ws/jaxb-generate-stubs/jaxb-codehaus-to-java</module>
+    <module>soap-ws/jaxb-generate-stubs/jaxb-jax-ws-xsd-to-java</module>
+    <module>soap-ws/jaxb-generate-xml</module>
+      <module>soap-ws/jaxb-generate-xml/jaxb-schemagen</module>
+  </modules>
+</project>

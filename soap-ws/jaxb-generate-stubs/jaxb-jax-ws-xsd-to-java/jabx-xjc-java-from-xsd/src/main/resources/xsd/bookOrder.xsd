@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://delte.org/purchaseOrder"
+            targetNamespace="http://delte.org/purchaseOrder"
+            elementFormDefault="qualified">
+
+    <xsd:element name="bookOrder" type="tns:BookOrderType"/>
+
+    <xsd:complexType name="BookOrderType">
+        <xsd:sequence>
+            <xsd:element name="ShipTo" type="tns:address" maxOccurs="2"/>
+        </xsd:sequence>
+        <xsd:attribute name="OrderDate" type="xsd:date"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="id">
+        <xsd:restriction>
+            <xsd:pattern value="[0-9]*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="string15Char">
+        <xsd:restriction>
+            <xsd:length value="15"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="IsPaid">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="yes"/>
+            <xsd:enumeration value="no"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="paymentMethod">
+        <xsd:choice>
+            <xsd:element name="cache" type="xsd:int"/>
+            <xsd:element name="visa" type="tns:visaType"/>
+        </xsd:choice>
+    </xsd:complexType>
+    <xsd:complexType name="visaType">
+        <xsd:choice>
+            <xsd:element name="debit-card" type="xsd:string"/>
+            <xsd:element name="master-card" type="xsd:string"/>
+            <xsd:element name="credit-card" type="xsd:string"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="address">
+        <xsd:sequence>
+            <xsd:element name="shipId" type="tns:id"/>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="street" type="tns:string15Char"/>
+            <xsd:element name="city" type="xsd:string"/>
+            <xsd:element name="zip" type="xsd:integer"/>
+            <xsd:element name="paymentStatus" type="tns:IsPaid"/>
+            <xsd:element name="paymentMethod" type="tns:paymentMethod"/>
+        </xsd:sequence>
+        <xsd:attribute name="country" type="xsd:NMTOKEN" fixed="US"/>
+    </xsd:complexType>
+</xsd:schema>
