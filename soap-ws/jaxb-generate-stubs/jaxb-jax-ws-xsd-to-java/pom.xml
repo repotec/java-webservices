@@ -13,7 +13,7 @@
 
     <name>jaxb-jax-ws-xsd-to-java</name>
     <modules>
-        <module>jabx-java-from-wsdl</module>
+        <module>jaxb-java-from-xsd</module>
         <module>jabx-xjc-java-from-xsd</module>
     </modules>
 </project>

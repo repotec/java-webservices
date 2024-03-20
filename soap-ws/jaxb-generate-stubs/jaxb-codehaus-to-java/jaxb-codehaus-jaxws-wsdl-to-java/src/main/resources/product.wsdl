@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+             xmlns:wsp="http://www.w3.org/ns/ws-policy"
+             xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy"
+             xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://www.delte.com/products"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.delte.com/products" name="productCategoryService">
+    <types>
+        <xs:schema xmlns:tns="http://www.delte.com/products"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0"
+                   targetNamespace="http://www.delte.com/products">
+            <xs:element name="listOfProducts" type="tns:listOfProducts"/>
+            <xs:element name="listOfProductsResponse" type="tns:listOfProductsResponse"/>
+            <xs:element name="productById" type="tns:productById"/>
+            <xs:element name="productByIdResponse" type="tns:productByIdResponse"/>
+            <xs:complexType name="listOfProducts">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="listOfProductsResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="tns:product" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="product">
+                <xs:sequence>
+                    <xs:element name="productId" type="xs:int" minOccurs="0"/>
+                    <xs:element name="productName" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="productById">
+                <xs:sequence>
+                    <xs:element name="productId" type="xs:int" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="productByIdResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="tns:product" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </types>
+    <message name="productById">
+        <part name="parameters" element="tns:productById"/>
+    </message>
+    <message name="productByIdResponse">
+        <part name="parameters" element="tns:productByIdResponse"/>
+    </message>
+    <message name="listOfProducts">
+        <part name="parameters" element="tns:listOfProducts"/>
+    </message>
+    <message name="listOfProductsResponse">
+        <part name="parameters" element="tns:listOfProductsResponse"/>
+    </message>
+    <portType name="ProductCategoryService">
+        <operation name="productById">
+            <input wsam:Action="findProductById" message="tns:productById"/>
+            <output wsam:Action="http://www.delte.com/products/ProductCategoryService/productByIdResponse" message="tns:productByIdResponse"/>
+        </operation>
+        <operation name="listOfProducts">
+            <input wsam:Action="getAllProductsList" message="tns:listOfProducts"/>
+            <output wsam:Action="http://www.delte.com/products/ProductCategoryService/listOfProductsResponse" message="tns:listOfProductsResponse"/>
+        </operation>
+    </portType>
+    <binding name="productCategoryServicePortBinding" type="tns:ProductCategoryService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="productById">
+            <soap:operation soapAction="findProductById"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="listOfProducts">
+            <soap:operation soapAction="getAllProductsList"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="productCategoryService">
+        <port name="productCategoryServicePort" binding="tns:productCategoryServicePortBinding">
+            <soap:address location="http://desktop-720arub:8080/products-api/productCategoryService"/>
+        </port>
+    </service>
+</definitions>

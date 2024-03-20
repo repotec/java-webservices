@@ -13,5 +13,7 @@
     <name>soap-ws</name>
     <modules>
         <module>jaxb-generate-stubs</module>
+        <module>spring-cxf</module>
+        <module>consume-product-service</module>
     </modules>
 </project>

@@ -15,5 +15,7 @@
     <modules>
         <module>jaxb-xjc-codehaus-xsd-to-java</module>
         <module>jaxb-codehaus-axistools-wsdl-to-java</module>
+        <module>jaxb-codehaus-jaxws-wsdl-to-java</module>
+        <module>jaxb-codehaus-jaxws-wsdl-to-java2</module>
     </modules>
 </project>
