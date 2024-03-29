@@ -1,0 +1,92 @@
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+             xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy"
+             xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.delte.com/products"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="http://www.delte.com/products" name="productCategoryService">
+    <types>
+        <xs:schema xmlns:tns="http://www.delte.com/products"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0"
+                   targetNamespace="http://www.delte.com/products">
+            <xs:element name="getProductById" type="tns:getProductById"/>
+            <xs:element name="getProductByIdResponse" type="tns:getProductByIdResponse"/>
+            <xs:element name="getProducts" type="tns:getProducts"/>
+            <xs:element name="getProductsResponse" type="tns:getProductsResponse"/>
+            <xs:complexType name="getProducts">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getProductsResponse">
+                <xs:sequence>
+                    <xs:element name="products" type="tns:product" form="qualified" minOccurs="0"
+                                maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="product">
+                <xs:sequence>
+                    <xs:element name="productId" type="xs:int"/>
+                    <xs:element name="productName" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getProductById">
+                <xs:sequence>
+                    <xs:element name="productIdR" type="xs:int" form="qualified" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getProductByIdResponse">
+                <xs:sequence>
+                    <xs:element name="getProductByIdResponse" type="tns:product" form="qualified" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </types>
+    <message name="getEmployeesById">
+        <part name="parameters" element="tns:getEmployeesById"/>
+    </message>
+    <message name="getEmployeesByIdResponse">
+        <part name="parameters" element="tns:getEmployeesByIdResponse"/>
+    </message>
+    <message name="getEmployees">
+        <part name="parameters" element="tns:getEmployees"/>
+    </message>
+    <message name="getEmployeesResponse">
+        <part name="parameters" element="tns:getEmployeesResponse"/>
+    </message>
+    <portType name="EmployeesServicePortType">
+        <operation name="getEmployeesById">
+            <input wsam:Action="getEmployeesByIdAction" message="tns:getEmployeesById"/>
+            <output wsam:Action="http://www.hr.com/employees/EmployeesServicePortType/getEmployeesByIdResponse"
+                    message="tns:getEmployeesByIdResponse"/>
+        </operation>
+        <operation name="getEmployees">
+            <input wsam:Action="getEmployeesAction" message="tns:getEmployees"/>
+            <output wsam:Action="http://www.hr.com/employees/EmployeesServicePortType/getEmployeesResponse"
+                    message="tns:getEmployeesResponse"/>
+        </operation>
+    </portType>
+    <binding name="EmployeesServicePortBinding" type="tns:EmployeesServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="getEmployeesById">
+            <soap:operation soapAction="getEmployeesByIdAction"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getEmployees">
+            <soap:operation soapAction="getEmployeesAction"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="EmployeeService">
+        <port name="EmployeesServicePort" binding="tns:EmployeesServicePortBinding">
+            <soap:address location="http://desktop-720arub:8080/employee-api/EmployeeService"/>
+        </port>
+    </service>
+</definitions>

@@ -14,6 +14,6 @@
     <name>jaxb-jax-ws-xsd-to-java</name>
     <modules>
         <module>jaxb-java-from-xsd</module>
-        <module>jabx-xjc-java-from-xsd</module>
+        <module>jaxb-jvnet-jaxb2-java-from-xsd</module>
     </modules>
 </project>

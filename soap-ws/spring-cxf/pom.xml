@@ -15,7 +15,7 @@
 
 
     <modules>
-        <module>spring-cxf-consume-wsdl</module>
+        <module>spring-cxf-order-service</module>
     </modules>
 
 </project>

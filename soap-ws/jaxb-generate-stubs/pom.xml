@@ -12,6 +12,6 @@
     <name>jaxb-generate-java</name>
     <modules>
         <module>jaxb-codehaus-to-java</module>
-        <module>jaxb-jvnet-to-java</module>
+        <module>jaxb-jvnet-wsdl-to-java</module>
     </modules>
 </project>

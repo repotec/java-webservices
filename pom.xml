@@ -15,5 +15,6 @@
         <module>soap-ws/jaxb-generate-xml</module>
         <module>soap-ws/jaxb-generate-xml/jaxb-schemagen</module>
         <module>rest-ws</module>
+        <module>soap-ws/spring-ws</module>
     </modules>
 </project>
