@@ -1,4 +1,4 @@
-package com.order.service.jaxb.builtin.java.native.java;
+package com.order.service.jaxb.builtin.java;
 
 /**
  * Hello world!
