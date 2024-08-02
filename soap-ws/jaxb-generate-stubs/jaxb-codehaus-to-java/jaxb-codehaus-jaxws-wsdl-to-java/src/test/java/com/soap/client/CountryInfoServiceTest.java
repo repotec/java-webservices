@@ -66,7 +66,7 @@ public class CountryInfoServiceTest {
     void countryName_UsingCompletableFutureTest() throws ExecutionException, InterruptedException {
         Instant start = Instant.now();
 
-        ExecutorService executor = Executors.newWorkStealingPool();
+        ExecutorService executor = Executors.newFixedThreadPool(2);
 
         CompletableFuture<String> completableFuture =
          CompletableFuture
@@ -85,6 +85,8 @@ public class CountryInfoServiceTest {
     @Order(4)
     void countryName_UsingCompletableFutureTest2() throws ExecutionException, InterruptedException {
         Instant start = Instant.now();
+
+
 
         CompletableFuture<String> cf1 = CompletableFuture
                 .supplyAsync(() -> countryService.listOfCountryNamesByCode().getTCountryCodeAndName().get(0).getSISOCode())

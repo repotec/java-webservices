@@ -14,7 +14,7 @@
     <name>spring-ws</name>
 
     <modules>
-        <module>spring-soap-ws-3.x</module>
-        <module>spring-order-soap-service-demo</module>
+        <module>spring-produce-soap-ws-3.x</module>
+        <module>spring-consume-soap-ws-3.x</module>
     </modules>
 </project>

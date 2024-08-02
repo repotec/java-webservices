@@ -1,12 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://trainings.ws.bharath.com/"
-	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
-	name="CustomerOrdersService" targetNamespace="http://trainings.ws.bharath.com/">
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://order.ws.com/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+	name="CustomerOrdersService" targetNamespace="http://order.ws.com/">
 	<wsdl:types>
 	<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-		xmlns:tns="http://trainings.ws.bharath.com/" elementFormDefault="unqualified"
-		targetNamespace="http://trainings.ws.bharath.com/" version="1.0">
+		xmlns:tns="http://order.ws.com/" elementFormDefault="unqualified"
+		targetNamespace="http://order.ws.com/" version="1.0">
 
 		<xs:complexType name="order">
 			<xs:sequence>
@@ -17,7 +18,7 @@
 
 		<xs:complexType name="product">
 			<xs:sequence>
-				<xs:element minOccurs="0" name="id" type="xs:string" />
+				<xs:element minOccurs="0" name="id" type="xs:integer" />
 				<xs:element minOccurs="0" name="description" type="xs:string" />
 				<xs:element minOccurs="0" name="quantity" type="xs:integer" />
 			</xs:sequence>

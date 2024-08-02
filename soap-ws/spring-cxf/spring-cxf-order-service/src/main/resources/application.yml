@@ -1,6 +1,6 @@
 server:
-  context:
-    path: /consume
+  servlet:
+    context-path: /customer
 
 cxf:
   path: /
